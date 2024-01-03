@@ -1,9 +1,9 @@
-import Styled from "@emotion/styled";
-import { Button, colors } from "@mui/joy";
+import Styled from '@emotion/styled';
+import { Button, colors } from '@mui/joy';
 
 type ButtonProps = {
-    buttoncolor?: string;
-    buttontype?: "primary" | "secondary";
+  buttoncolor?: string;
+  buttontype?: 'primary' | 'secondary';
 };
 export const PrimaryButton = Styled(Button)<ButtonProps>`
     border-radius: 8px;
@@ -48,7 +48,7 @@ export const OutlinedActionButton = Styled(Button)<ButtonProps>`
     flex: 1 0 0;
     text-transform: none;
     &:hover {
-        background: ${(props) => props.buttoncolor || "#fff"};
+        background: ${(props) => props.buttoncolor || '#fff'};
         opacity: 0.8;
     }
 `;
@@ -74,7 +74,7 @@ export const SecondaryButton = Styled(Button)<ButtonProps>`
     line-height: 20px; /* 142.857% */
     text-transform: none;
     &:hover {
-        background: ${(props) => props.buttoncolor || "#fff"};
+        background: ${(props) => props.buttoncolor || '#fff'};
         opacity: 0.8;
     }
 `;
@@ -106,7 +106,7 @@ export const SecondaryTextButton = Styled(Button)`
 `;
 
 export const TextButton = Styled(Button)<ButtonProps>`
-    color: ${(props) => (props.buttontype === "primary" ? "#26BDD7" : "#000")};
+    color: ${(props) => (props.buttontype === 'primary' ? '#26BDD7' : '#000')};
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -114,4 +114,8 @@ export const TextButton = Styled(Button)<ButtonProps>`
     line-height: 24px; /* 150% */
     background:  transparent;
     text-transform: none;
+    &:hover {
+        background: ${(props) => props.buttoncolor || '#fff'};
+        opacity: 0.8;
+    }
 `;

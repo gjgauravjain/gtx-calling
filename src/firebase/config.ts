@@ -8,14 +8,12 @@
 //   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 // };
 
-
 export const firebaseConfig = {
-    apiKey: "AIzaSyAEKJ2oJgwl_wOf-J6swG8b_FeY3XPerqc",
-    authDomain: "gtx-calling.firebaseapp.com",
-    projectId: "gtx-calling",
-    storageBucket: "gtx-calling.appspot.com",
-    messagingSenderId: "186409075266",
-    appId: "1:186409075266:web:abe2cb18ca24793370e3db",
-    measurementId: "G-VC1HXLCEPL"
-  };
-  
+  apiKey: 'AIzaSyAEKJ2oJgwl_wOf-J6swG8b_FeY3XPerqc',
+  authDomain: 'gtx-calling.firebaseapp.com',
+  projectId: 'gtx-calling',
+  storageBucket: 'gtx-calling.appspot.com',
+  messagingSenderId: '186409075266',
+  appId: '1:186409075266:web:abe2cb18ca24793370e3db',
+  measurementId: 'G-VC1HXLCEPL',
+};
