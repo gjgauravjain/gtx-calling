@@ -1,10 +1,12 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { RegisterType } from '../container/register/type';
-import { firebaseAuth } from '../firebase';
+import { db, firebaseAuth } from '../firebase';
 import { LoginType } from '../container/login/type';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { UserInfoType } from '../context/type';
+import { UserType } from '../container/user/type';
+import { addDoc, collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 
 export const createNewUser = async (values: RegisterType) => {
   return createUserWithEmailAndPassword(firebaseAuth, values.email, values.password)
@@ -60,4 +62,43 @@ export const handleGoogleLogin = async () => {
       toast.error(errorMessage);
       return Promise.reject();
     });
+};
+
+export const addNewUser = async (value: UserType) => {
+  return addDoc(collection(db, 'usersList'), {
+    name: value.name,
+    email: value.email,
+  })
+    .then(() => {
+      return Promise.resolve();
+    })
+    .catch((err) => {
+      toast.error(err.message);
+      return Promise.reject(err.message);
+    });
+};
+
+export const getUsersList = async () => {
+  try {
+    const doc_refs = await getDocs(collection(db, 'usersList'));
+    const res: UserType[] = [];
+    doc_refs.forEach((data: any) => {
+      console.log('data', data.data());
+      res.push({
+        ...data.data(),
+        id: data.id,
+      });
+    });
+    return res.map((item) => ({ ...item }));
+  } catch (error: any) {
+    throw new Error(`Error fetching users: ${error.message}`);
+  }
+};
+export const deleteUser = async (userId: string) => {
+  try {
+    await deleteDoc(doc(db, 'usersList', userId));
+    return Promise.resolve();
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
 };
